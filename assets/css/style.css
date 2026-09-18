@@ -318,7 +318,7 @@ body::before {
 [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
 [data-reveal].visible { opacity: 1; transform: translateY(0); }
 
-.hero-carousel { padding-top: 88px; padding-bottom: 56px; }
+.hero-carousel { padding-top: 24px; padding-bottom: 56px; }
 
 /* ===== Split hero (kohconcept-style two-column layout) ===== */
 .split-hero {
@@ -429,7 +429,6 @@ body::before {
 
 /* ===== Section head centered + dash progress ===== */
 .section-head.centered { text-align: center; margin-inline: auto; }
-.eyebrow-plain { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 10px; }
 .dash-progress { display: flex; justify-content: center; gap: 6px; margin-top: 18px; margin-bottom: 40px; }
 .dash-progress span { width: 26px; height: 4px; border-radius: 3px; background: var(--border); }
 .dash-progress span.active { background: var(--accent-grad); box-shadow: 0 0 8px 1px rgba(255, 106, 26,.6); }
@@ -492,7 +491,6 @@ body::before {
 }
 
 /* ===== Final gradient CTA pill ===== */
-.cta-final-wrap { text-align: center; padding-top: 20px; }
 .btn-gradient-pill {
   display: inline-flex; align-items: center; gap: 10px; width: min(520px, 100%); justify-content: center;
   padding: 20px 32px; border-radius: 999px; background: var(--accent-grad); color: #fff; font-weight: 800; font-size: 1.02rem;
