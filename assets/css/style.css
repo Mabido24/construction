@@ -434,3 +434,19 @@ body::before {
 @media (hover: hover) and (pointer: fine) {
   .swipe-hint { display: none; }
 }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 1000;
+  background: var(--accent); color: #fff; padding: 12px 20px; border-radius: 0 0 10px 0;
+  font-weight: 700; font-size: .9rem;
+}
+.skip-link:focus { left: 0; }
+
+/* ===== Section frame: every section's content sits in a light, rounded, orange-edged frame ===== */
+.section-frame {
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  padding: 40px clamp(20px, 4vw, 40px);
+  box-shadow: var(--shadow);
+}
