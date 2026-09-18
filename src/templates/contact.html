@@ -1,0 +1,120 @@
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="{{HOME_HREF}}">{{nav.home}}</a> / {{nav.contact}}</div>
+    <h1 data-reveal>{{contact.title}}</h1>
+    <p class="lead" style="max-width:60ch;" data-reveal>{{contact.intro}}</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="container contact-wrap">
+    <div class="form-card" data-reveal>
+      <form data-contact-form action="https://api.web3forms.com/submit" method="POST"
+            data-success-text="{{contact.form.success}}" data-error-text="{{contact.form.error}}">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+        <input type="hidden" name="subject" value="New contact request — {{site.name}}" />
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
+
+        <div class="field">
+          <label for="f-subject">{{contact.form.subject.label}} *</label>
+          <select id="f-subject" name="subject" required>
+            <option value="construction">{{contact.form.subject.construction}}</option>
+            <option value="renovation">{{contact.form.subject.renovation}}</option>
+            <option value="domotics">{{contact.form.subject.domotics}}</option>
+            <option value="other">{{contact.form.subject.other}}</option>
+          </select>
+        </div>
+
+        <div class="field" data-other-field style="display:none;">
+          <label for="f-other">{{contact.form.subject.other_placeholder}}</label>
+          <input id="f-other" type="text" name="subject_other" />
+        </div>
+
+        <div class="field">
+          <label for="f-location">{{contact.form.location.label}} *</label>
+          <select id="f-location" name="location" required>
+            <option value="rawai" selected>{{areas.rawai}}</option>
+            <option value="chalong">{{areas.chalong}}</option>
+            <option value="karon">{{areas.karon}}</option>
+            <option value="kata">{{areas.kata}}</option>
+            <option value="wichit">{{areas.wichit}}</option>
+            <option value="ratsada">{{areas.ratsada}}</option>
+            <option value="kathu">{{areas.kathu}}</option>
+            <option value="patong">{{areas.patong}}</option>
+          </select>
+          <div class="help">{{contact.form.location.help}}</div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">{{contact.form.name.label}} *</label>
+            <input id="f-name" type="text" name="name" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="f-email">{{contact.form.email.label}} *</label>
+            <input id="f-email" type="email" name="email" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-phone">{{contact.form.phone.label}} *</label>
+            <input id="f-phone" type="tel" name="phone" required autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="f-lang">{{contact.form.language.label}}</label>
+            <select id="f-lang" name="preferred_language">
+              <option value="en" selected>{{contact.form.language.en}}</option>
+              <option value="fr">{{contact.form.language.fr}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-budget">{{contact.form.budget.label}}</label>
+            <input id="f-budget" type="text" name="budget" />
+          </div>
+          <div class="field">
+            <label for="f-timeline">{{contact.form.timeline.label}}</label>
+            <input id="f-timeline" type="date" name="timeline" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-message">{{contact.form.message.label}} *</label>
+          <textarea id="f-message" name="message" rows="5" required></textarea>
+        </div>
+
+        <div class="field checkbox-field">
+          <input id="f-consent" type="checkbox" name="consent" required />
+          <label for="f-consent">{{contact.form.consent.label}} *</label>
+        </div>
+
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center;">{{contact.form.submit}}</button>
+        <div class="form-msg" data-form-msg role="status"></div>
+      </form>
+    </div>
+
+    <aside class="side-info" data-reveal>
+      <div class="info-card">
+        <h4>{{nav.contact}}</h4>
+        <p><a href="https://wa.me/66000000000" target="_blank" rel="noopener">WhatsApp</a></p>
+      </div>
+      <div class="info-card">
+        <h4>{{areas.title}}</h4>
+        <p>{{areas.intro}}</p>
+        <div class="areas-list">
+          <span class="primary">{{areas.rawai}}</span>
+          <span>{{areas.chalong}}</span>
+          <span>{{areas.karon}}</span>
+          <span>{{areas.kata}}</span>
+          <span>{{areas.wichit}}</span>
+          <span>{{areas.ratsada}}</span>
+          <span>{{areas.kathu}}</span>
+          <span>{{areas.patong}}</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

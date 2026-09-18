@@ -1,0 +1,151 @@
+<section class="contact-arc contact-arc-top" data-reveal>
+  <div class="container">
+    <div class="arc-wrap" data-arc-carousel data-active="1">
+      <button class="arc-nav prev" type="button" aria-label="Previous" data-arc-prev>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <svg class="arc-line" viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M20,110 Q300,-40 580,110" fill="none" stroke="url(#arcgrad)" stroke-width="2"/>
+        <defs><linearGradient id="arcgrad" x1="0" x2="1"><stop offset="0" stop-color="#ffb703"/><stop offset="1" stop-color="#ff3d3d"/></linearGradient></defs>
+      </svg>
+
+      <div class="arc-items">
+        <template data-arc-item data-href="{{RENOVATION_HREF}}" data-tone="renovation-tone" data-label="{{nav.renovation}}" data-sub="{{services.renovation.title}}">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2 4 12l3 3 10-10zM2 22l4-1 9-9-3-3-9 9z"/></svg>
+        </template>
+        <template data-arc-item data-href="{{CONSTRUCTION_HREF}}" data-tone="construction-tone" data-label="{{nav.construction}}" data-sub="{{services.construction.title}}">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+        </template>
+        <template data-arc-item data-href="{{DOMOTICS_HREF}}" data-tone="domotics-tone" data-label="{{nav.domotics}}" data-sub="{{services.domotics.title}}">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg>
+        </template>
+        <div class="arc-slot side" data-arc-slot="prev"></div>
+        <div class="arc-slot center" data-arc-slot="center"></div>
+        <div class="arc-slot side" data-arc-slot="next"></div>
+      </div>
+
+      <button class="arc-nav next" type="button" aria-label="Next" data-arc-next>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <p class="swipe-hint" data-reveal>{{hero.swipe_select}}</p>
+
+    <a class="chevron-down" href="#services-carousel" aria-label="Scroll to services">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
+  </div>
+</section>
+
+<section id="services-carousel">
+  <div class="container">
+    <div class="section-head centered" data-reveal>
+      <span class="eyebrow-plain">{{services.carousel.eyebrow}}</span>
+      <h2>{{services.carousel.title}}</h2>
+      <div class="dash-progress"><span class="active"></span><span></span><span></span></div>
+    </div>
+
+    <div class="fan-carousel" data-fan-carousel data-reveal>
+      <button class="fan-arrow left" type="button" data-fan-prev aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <div class="fan-stack">
+        <article class="fan-card" data-fan-card data-href="{{CONSTRUCTION_HREF}}">
+          <div class="fan-card-top">
+            <span class="fan-index">1/3</span>
+            <span class="fan-tag">{{services.carousel.popular}}</span>
+          </div>
+          <div class="fan-icon-lg">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+          </div>
+          <h3>{{services.construction.title}}</h3>
+          <p>{{services.construction.desc}}</p>
+          <span class="fan-link">{{services.learnmore}} →</span>
+        </article>
+
+        <article class="fan-card" data-fan-card data-href="{{RENOVATION_HREF}}">
+          <div class="fan-card-top">
+            <span class="fan-index">2/3</span>
+          </div>
+          <div class="fan-icon-lg">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2 4 12l3 3 10-10zM2 22l4-1 9-9-3-3-9 9z"/></svg>
+          </div>
+          <h3>{{services.renovation.title}}</h3>
+          <p>{{services.renovation.desc}}</p>
+          <span class="fan-link">{{services.learnmore}} →</span>
+        </article>
+
+        <article class="fan-card" data-fan-card data-href="{{DOMOTICS_HREF}}">
+          <div class="fan-card-top">
+            <span class="fan-index">3/3</span>
+          </div>
+          <div class="fan-icon-lg">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg>
+          </div>
+          <h3>{{services.domotics.title}}</h3>
+          <p>{{services.domotics.desc}}</p>
+          <span class="fan-link">{{services.learnmore}} →</span>
+        </article>
+      </div>
+
+      <button class="fan-arrow right" type="button" data-fan-next aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <p class="swipe-hint">{{services.carousel.swipe}}</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <h2>{{areas.title}}</h2>
+      <p>{{areas.intro}}</p>
+    </div>
+    <div class="areas-list" data-reveal>
+      <span class="primary">{{areas.rawai}}</span>
+      <span>{{areas.chalong}}</span>
+      <span>{{areas.karon}}</span>
+      <span>{{areas.kata}}</span>
+      <span>{{areas.wichit}}</span>
+      <span>{{areas.ratsada}}</span>
+      <span>{{areas.kathu}}</span>
+      <span>{{areas.patong}}</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-item" data-reveal>
+        <div class="num">01</div>
+        <h3>{{why.item1.title}}</h3>
+        <p>{{why.item1.desc}}</p>
+      </div>
+      <div class="why-item" data-reveal>
+        <div class="num">02</div>
+        <h3>{{why.item2.title}}</h3>
+        <p>{{why.item2.desc}}</p>
+      </div>
+      <div class="why-item" data-reveal>
+        <div class="num">03</div>
+        <h3>{{why.item3.title}}</h3>
+        <p>{{why.item3.desc}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final-wrap">
+  <div class="container">
+    <a class="btn-gradient-pill" href="{{CONTACT_HREF}}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      {{cta.button}}
+    </a>
+    <p class="footer-fineprint">&copy; {{YEAR}} {{site.name}}. {{footer.rights}}</p>
+  </div>
+</section>

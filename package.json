@@ -1,0 +1,9 @@
+{
+  "name": "construction-rawai",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "node scripts/build.js && npx --yes http-server dist -p 8080 -c-1"
+  }
+}
