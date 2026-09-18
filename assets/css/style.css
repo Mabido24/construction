@@ -317,7 +317,7 @@ body::before {
 
 .intro-card {
   max-width: 760px; margin: 0 auto 40px; padding: 24px 28px; border-radius: var(--radius);
-  border: 1px solid var(--border); background: var(--bg-elev); box-shadow: var(--shadow);
+  border: 1.5px solid var(--accent); background: var(--bg-elev); box-shadow: var(--shadow), var(--glow);
 }
 .intro-card p { margin: 0; color: var(--text); font-size: .98rem; line-height: 1.65; }
 
