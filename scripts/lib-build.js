@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const ROOT = path.resolve(__dirname, '..');
 const SRC = path.join(ROOT, 'src');
@@ -80,6 +81,9 @@ function build(opts) {
   const footer = readPartial(partialsDir, 'footer.html');
   const sitemapUrls = [];
 
+  // cache-bust CSS/JS on every build so browsers/CDN never serve stale assets after a deploy
+  const assetVersion = crypto.createHash('md5').update(String(Date.now())).digest('hex').slice(0, 10);
+
   const enDict = loadJSON(path.join(SRC, 'i18n', 'en.json'));
 
   for (const locale of LOCALES) {
@@ -107,9 +111,10 @@ function build(opts) {
         LOCALE_UPPER: locale.toUpperCase(),
         META_TITLE: `${dict[titleKey]} | ${dict['site.name']}`,
         META_DESC: dict[descKey],
-        THEME_CSS: opts.themeCss,
+        THEME_CSS: opts.themeCss + '?v=' + assetVersion,
         THEME_COLOR: opts.themeColor,
         THEME_FONTS: opts.themeFonts,
+        ASSET_VERSION: assetVersion,
         DIR: dir,
         SITE_URL,
         PAGE_PATH: page.path,
