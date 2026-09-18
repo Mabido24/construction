@@ -232,8 +232,13 @@ body::before {
 }
 .areas-list span.primary { background: var(--accent-grad); color: #fff; border-color: transparent; font-weight: 800; box-shadow: var(--glow); }
 
-.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr; } }
+.why-item {
+  border: 1px solid var(--border); border-radius: var(--radius); padding: 28px;
+  background: var(--bg-soft); transition: border-color .3s ease, transform .3s ease;
+}
+.why-item:hover { border-color: var(--accent); transform: translateY(-4px); }
 .why-item .num {
   font-family: var(--ff-display); font-size: 2.4rem; font-weight: 800; margin-bottom: 10px;
   background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent;
