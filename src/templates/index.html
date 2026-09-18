@@ -1,70 +1,94 @@
 <section id="services-carousel" class="hero-carousel">
-  <div class="container section-frame">
-    <h1 class="hero-headline" data-reveal>{{hero.headline}}</h1>
+  <div class="container">
+    <div class="split-hero">
+      <aside class="split-left">
+        <div class="split-avatar">
+          <span class="orbit-ring"></span>
+          <span class="split-avatar-mark">B</span>
+        </div>
+        <h1 class="split-name">{{site.name}}</h1>
+        <p class="split-role">{{hero.headline}}</p>
+        <p class="split-loc">{{areas.rawai}}, PHUKET</p>
+        <div class="grad-divider"></div>
 
-    <div class="intro-card" data-reveal>
-      <p>{{hero.intro}}</p>
-    </div>
+        <div class="arc-wrap arc-wrap-compact" data-arc-carousel data-reveal>
+          <button class="arc-nav prev" type="button" aria-label="Previous" data-arc-prev>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
 
-    <div class="arc-wrap" data-arc-carousel data-reveal>
-      <button class="arc-nav prev" type="button" aria-label="Previous" data-arc-prev>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
+          <svg class="arc-line" viewBox="0 0 600 90" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M20,80 Q300,-40 580,80" fill="none" stroke="url(#arcgrad)" stroke-width="2"/>
+            <defs><linearGradient id="arcgrad" x1="0" x2="1"><stop offset="0" stop-color="#ffb703"/><stop offset="1" stop-color="#ff3d3d"/></linearGradient></defs>
+          </svg>
 
-      <svg class="arc-line" viewBox="0 0 600 90" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M20,80 Q300,-40 580,80" fill="none" stroke="url(#arcgrad)" stroke-width="2"/>
-        <defs><linearGradient id="arcgrad" x1="0" x2="1"><stop offset="0" stop-color="#ffb703"/><stop offset="1" stop-color="#ff3d3d"/></linearGradient></defs>
-      </svg>
+          <button class="arc-nav next" type="button" aria-label="Next" data-arc-next>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+        <p class="swipe-hint"><span class="swipe-icon" aria-hidden="true"></span>{{hero.swipe_select}}</p>
 
-      <button class="arc-nav next" type="button" aria-label="Next" data-arc-next>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
+        <a class="btn-gradient-pill split-cta" href="{{CONTACT_HREF}}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          {{cta.button}}
+        </a>
+        <p class="footer-fineprint">&copy; {{YEAR}} {{site.name}}. {{footer.rights}}</p>
+      </aside>
 
-    <div class="dash-progress" data-dash-progress data-reveal><span></span><span></span><span></span></div>
+      <div class="split-right">
+        <div class="section-head centered" data-reveal>
+          <span class="eyebrow-plain">{{services.carousel.eyebrow}}</span>
+          <h2>{{services.carousel.title}}</h2>
+          <div class="dash-progress" data-dash-progress><span></span><span></span><span></span></div>
+        </div>
 
-    <div class="fan-carousel" data-fan-carousel data-reveal>
-      <div class="fan-stack">
-        <article class="fan-card" data-fan-card data-service="construction" data-href="{{CONSTRUCTION_HREF}}">
-          <div class="fan-card-top">
-            <span class="fan-index">1/3</span>
-            <span class="fan-tag">{{services.carousel.popular}}</span>
+        <div class="intro-card" data-reveal>
+          <p>{{hero.intro}}</p>
+        </div>
+
+        <div class="fan-carousel" data-fan-carousel data-reveal>
+          <div class="fan-stack">
+            <article class="fan-card" data-fan-card data-service="construction" data-href="{{CONSTRUCTION_HREF}}">
+              <div class="fan-card-top">
+                <span class="fan-index">1/3</span>
+                <span class="fan-tag">{{services.carousel.popular}}</span>
+              </div>
+              <div class="fan-icon-lg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+              </div>
+              <h3>{{services.construction.title}}</h3>
+              <p>{{services.construction.desc}}</p>
+              <span class="fan-link">{{services.learnmore}} →</span>
+            </article>
+
+            <article class="fan-card" data-fan-card data-service="renovation" data-href="{{RENOVATION_HREF}}">
+              <div class="fan-card-top">
+                <span class="fan-index">2/3</span>
+              </div>
+              <div class="fan-icon-lg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2 4 12l3 3 10-10zM2 22l4-1 9-9-3-3-9 9z"/></svg>
+              </div>
+              <h3>{{services.renovation.title}}</h3>
+              <p>{{services.renovation.desc}}</p>
+              <span class="fan-link">{{services.learnmore}} →</span>
+            </article>
+
+            <article class="fan-card" data-fan-card data-service="domotics" data-href="{{DOMOTICS_HREF}}">
+              <div class="fan-card-top">
+                <span class="fan-index">3/3</span>
+              </div>
+              <div class="fan-icon-lg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg>
+              </div>
+              <h3>{{services.domotics.title}}</h3>
+              <p>{{services.domotics.desc}}</p>
+              <span class="fan-link">{{services.learnmore}} →</span>
+            </article>
           </div>
-          <div class="fan-icon-lg">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
-          </div>
-          <h3>{{services.construction.title}}</h3>
-          <p>{{services.construction.desc}}</p>
-          <span class="fan-link">{{services.learnmore}} →</span>
-        </article>
+        </div>
 
-        <article class="fan-card" data-fan-card data-service="renovation" data-href="{{RENOVATION_HREF}}">
-          <div class="fan-card-top">
-            <span class="fan-index">2/3</span>
-          </div>
-          <div class="fan-icon-lg">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2 4 12l3 3 10-10zM2 22l4-1 9-9-3-3-9 9z"/></svg>
-          </div>
-          <h3>{{services.renovation.title}}</h3>
-          <p>{{services.renovation.desc}}</p>
-          <span class="fan-link">{{services.learnmore}} →</span>
-        </article>
-
-        <article class="fan-card" data-fan-card data-service="domotics" data-href="{{DOMOTICS_HREF}}">
-          <div class="fan-card-top">
-            <span class="fan-index">3/3</span>
-          </div>
-          <div class="fan-icon-lg">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg>
-          </div>
-          <h3>{{services.domotics.title}}</h3>
-          <p>{{services.domotics.desc}}</p>
-          <span class="fan-link">{{services.learnmore}} →</span>
-        </article>
+        <p class="swipe-hint"><span class="swipe-icon" aria-hidden="true"></span>{{services.carousel.swipe}}</p>
       </div>
     </div>
-
-    <p class="swipe-hint"><span class="swipe-icon" aria-hidden="true"></span>{{services.carousel.swipe}}</p>
   </div>
 </section>
 
