@@ -11,8 +11,8 @@
         <p class="split-loc">{{areas.rawai}}, PHUKET</p>
         <div class="grad-divider"></div>
 
-        <div class="arc-wrap arc-wrap-compact" data-arc-carousel data-reveal>
-          <button class="arc-nav prev" type="button" aria-label="Previous" data-arc-prev>
+        <div class="arc-wrap arc-wrap-compact" data-contact-carousel data-reveal>
+          <button class="arc-nav prev" type="button" aria-label="Previous" data-contact-prev>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
 
@@ -21,10 +21,26 @@
             <defs><linearGradient id="arcgrad" x1="0" x2="1"><stop offset="0" stop-color="#ffb703"/><stop offset="1" stop-color="#ff3d3d"/></linearGradient></defs>
           </svg>
 
-          <button class="arc-nav next" type="button" aria-label="Next" data-arc-next>
+          <button class="arc-nav next" type="button" aria-label="Next" data-contact-next>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         </div>
+
+        <div class="arc-items">
+          <template data-contact-item data-href="tel:+66000000000" data-tone="renovation-tone" data-label="Call">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </template>
+          <template data-contact-item data-href="https://wa.me/66000000000" data-tone="domotics-tone" data-label="WhatsApp">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </template>
+          <template data-contact-item data-href="mailto:hello@brd.example" data-tone="construction-tone" data-label="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          </template>
+          <div class="arc-slot side" data-contact-slot="prev"></div>
+          <div class="arc-slot center" data-contact-slot="center"></div>
+          <div class="arc-slot side" data-contact-slot="next"></div>
+        </div>
+
         <p class="swipe-hint"><span class="swipe-icon" aria-hidden="true"></span>{{hero.swipe_select}}</p>
 
         <a class="btn-gradient-pill split-cta" href="{{CONTACT_HREF}}">
@@ -46,7 +62,11 @@
         </div>
 
         <div class="fan-carousel" data-fan-carousel data-reveal>
-          <div class="fan-stack">
+          <button class="arc-nav prev" type="button" aria-label="Previous" data-fan-prev>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+
+          <div class="fan-row">
             <article class="fan-card" data-fan-card data-service="construction" data-href="{{CONSTRUCTION_HREF}}">
               <div class="fan-card-top">
                 <span class="fan-index">1/3</span>
@@ -84,6 +104,10 @@
               <span class="fan-link">{{services.learnmore}} →</span>
             </article>
           </div>
+
+          <button class="arc-nav next" type="button" aria-label="Next" data-fan-next>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
         </div>
 
         <p class="swipe-hint"><span class="swipe-icon" aria-hidden="true"></span>{{services.carousel.swipe}}</p>

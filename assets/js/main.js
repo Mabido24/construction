@@ -61,11 +61,9 @@
     revealEls.forEach(function (el) { el.classList.add("visible"); });
   }
 
-  // ---- Homepage "Discover our work": the arc is decorative (curve + arrows only);
-  // the single arrow pair drives which vignette card is active ----
-  var arcCarousel = document.querySelector("[data-arc-carousel]");
+  // ---- Homepage "Discover our work": horizontal vignette row, arrows flank the row ----
   var fanRoot = document.querySelector("[data-fan-carousel]");
-  if (arcCarousel || fanRoot) {
+  if (fanRoot) {
     var SERVICES = ["renovation", "construction", "domotics"];
     var active = SERVICES.indexOf("construction");
 
@@ -89,8 +87,8 @@
       render();
     };
 
-    var prevBtn = document.querySelector("[data-arc-prev]");
-    var nextBtn = document.querySelector("[data-arc-next]");
+    var prevBtn = document.querySelector("[data-fan-prev]");
+    var nextBtn = document.querySelector("[data-fan-next]");
     if (prevBtn) prevBtn.addEventListener("click", function () { go(-1); });
     if (nextBtn) nextBtn.addEventListener("click", function () { go(1); });
 
@@ -103,20 +101,72 @@
       });
     });
 
-    // swipe support (touch / PWA) on both the arc and the card stack
-    [arcCarousel, fanRoot].forEach(function (el) {
-      if (!el) return;
-      var startX = null;
-      el.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
-      el.addEventListener("touchend", function (e) {
-        if (startX === null) return;
-        var dx = e.changedTouches[0].clientX - startX;
-        if (Math.abs(dx) > 40) go(dx > 0 ? -1 : 1);
-        startX = null;
-      });
+    // swipe support (touch / PWA)
+    var startX = null;
+    fanRoot.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    fanRoot.addEventListener("touchend", function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) go(dx > 0 ? -1 : 1);
+      startX = null;
     });
 
     render();
+  }
+
+  // ---- Left-panel contact vignettes: independent 3-item arc (prev / center / next) ----
+  var contactCarousel = document.querySelector("[data-contact-carousel]");
+  if (contactCarousel) {
+    var contactItems = Array.prototype.slice.call(document.querySelectorAll("[data-contact-item]"));
+    var contactActive = 1; // default center = WhatsApp
+
+    var renderContactSlot = function (slotName, item, isCenter) {
+      var slot = document.querySelector('[data-contact-slot="' + slotName + '"]');
+      if (!item || !slot) return;
+      var href = item.getAttribute("data-href");
+      var tone = item.getAttribute("data-tone");
+      var label = item.getAttribute("data-label");
+      var svg = item.innerHTML;
+      if (isCenter) {
+        slot.innerHTML =
+          '<a class="arc-item arc-center" href="' + href + '" target="_blank" rel="noopener">' +
+          '<span class="arc-icon-center">' + svg + '</span>' +
+          '<span class="arc-label strong">' + label + '</span></a>';
+      } else {
+        slot.innerHTML =
+          '<a class="arc-item" href="' + href + '" target="_blank" rel="noopener">' +
+          '<span class="arc-icon ' + tone + '">' + svg + '</span>' +
+          '<span class="arc-label">' + label + '</span></a>';
+      }
+    };
+
+    var renderContact = function () {
+      var n = contactItems.length;
+      renderContactSlot("prev", contactItems[(contactActive - 1 + n) % n], false);
+      renderContactSlot("center", contactItems[contactActive], true);
+      renderContactSlot("next", contactItems[(contactActive + 1) % n], false);
+    };
+
+    var shiftContact = function (delta) {
+      contactActive = (contactActive + delta + contactItems.length) % contactItems.length;
+      renderContact();
+    };
+
+    var contactPrevBtn = document.querySelector("[data-contact-prev]");
+    var contactNextBtn = document.querySelector("[data-contact-next]");
+    if (contactPrevBtn) contactPrevBtn.addEventListener("click", function () { shiftContact(-1); });
+    if (contactNextBtn) contactNextBtn.addEventListener("click", function () { shiftContact(1); });
+
+    var contactStartX = null;
+    contactCarousel.addEventListener("touchstart", function (e) { contactStartX = e.touches[0].clientX; }, { passive: true });
+    contactCarousel.addEventListener("touchend", function (e) {
+      if (contactStartX === null) return;
+      var dx = e.changedTouches[0].clientX - contactStartX;
+      if (Math.abs(dx) > 40) shiftContact(dx > 0 ? -1 : 1);
+      contactStartX = null;
+    });
+
+    renderContact();
   }
 
   // ---- Contact form: subject "other" reveal + submit ----
