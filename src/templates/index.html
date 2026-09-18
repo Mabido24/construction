@@ -23,14 +23,14 @@
             </svg>
 
             <div class="arc-items">
-              <template data-contact-item data-href="tel:+66000000000" data-tone="tone-call" data-label="Call">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <template data-contact-item data-href="#areas-section" data-tone="tone-call" data-label="{{arc.area}}">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </template>
-              <template data-contact-item data-href="https://wa.me/66000000000" data-tone="tone-whatsapp" data-label="WhatsApp">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <template data-contact-item data-href="{{CONTACT_HREF}}" data-tone="tone-whatsapp" data-label="{{nav.contact}}">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               </template>
-              <template data-contact-item data-href="mailto:hello@brd.example" data-tone="tone-email" data-label="Email">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              <template data-contact-item data-href="#benefits-section" data-tone="tone-email" data-label="{{arc.benefits}}">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 11v10H4a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h3zm0 0 4.5-8a2 2 0 0 1 3.6 1.4L14.4 9H19a2 2 0 0 1 2 2.2l-1.1 8A3 3 0 0 1 16.9 22H10a3 3 0 0 1-3-3v-8z"/></svg>
               </template>
               <div class="arc-slot side" data-contact-slot="prev"></div>
               <div class="arc-slot center" data-contact-slot="center"></div>
@@ -133,7 +133,7 @@
   </div>
 </section>
 
-<section>
+<section id="areas-section" class="toggle-section" data-toggle-section>
   <div class="container section-frame">
     <div class="section-head" data-reveal>
       <h2>{{areas.title}}</h2>
@@ -152,7 +152,7 @@
   </div>
 </section>
 
-<section>
+<section id="benefits-section" class="toggle-section" data-toggle-section>
   <div class="container section-frame">
     <div class="why-grid">
       <div class="why-item" data-reveal>

@@ -560,3 +560,7 @@ body::before {
   padding: 40px clamp(20px, 4vw, 40px);
   box-shadow: var(--shadow);
 }
+
+/* Homepage-only sections revealed via the left-panel Area/Benefits shortcuts */
+.toggle-section { display: none; }
+.toggle-section.is-open { display: block; }

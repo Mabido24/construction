@@ -129,12 +129,12 @@
       var svg = item.innerHTML;
       if (isCenter) {
         slot.innerHTML =
-          '<a class="arc-item arc-center" href="' + href + '" target="_blank" rel="noopener">' +
+          '<a class="arc-item arc-center" href="' + href + '">' +
           '<span class="arc-icon-center ' + tone + '">' + svg + '</span>' +
           '<span class="arc-label strong">' + label + '</span></a>';
       } else {
         slot.innerHTML =
-          '<a class="arc-item" href="' + href + '" target="_blank" rel="noopener">' +
+          '<a class="arc-item" href="' + href + '">' +
           '<span class="arc-icon ' + tone + '">' + svg + '</span>' +
           '<span class="arc-label">' + label + '</span></a>';
       }
@@ -167,6 +167,18 @@
     });
 
     renderContact();
+
+    // in-page shortcut links (#areas-section, #benefits-section): reveal the
+    // hidden section (it doesn't show on the homepage otherwise) and scroll to it
+    contactCarousel.addEventListener("click", function (e) {
+      var link = e.target.closest("a[href^='#']");
+      if (!link) return;
+      var target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
+      e.preventDefault();
+      target.classList.add("is-open");
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   }
 
   // ---- Contact form: subject "other" reveal + submit ----
