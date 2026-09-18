@@ -1,42 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <defs>
-    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="roofGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#ffb703"/>
-      <stop offset="55%" stop-color="#ff6a1a"/>
+      <stop offset="50%" stop-color="#ff6a1a"/>
       <stop offset="100%" stop-color="#ff3d3d"/>
     </linearGradient>
-    <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#fff7ec"/>
+    <linearGradient id="pulseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6bb8ff"/>
+      <stop offset="100%" stop-color="#2f8fd6"/>
     </linearGradient>
-    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="2.6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
-  <!-- badge -->
-  <rect x="4" y="4" width="192" height="192" rx="46" fill="url(#badgeGrad)"/>
-  <rect x="4" y="4" width="192" height="192" rx="46" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2"/>
+  <!-- roof: two clean strokes meeting at an apex, gradient -->
+  <path d="M34,90 L100,32 L166,90" fill="none" stroke="url(#roofGrad)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- house base: construction -->
-  <rect x="60" y="112" width="80" height="56" rx="8" fill="none" stroke="#ffffff" stroke-width="9" stroke-linejoin="round"/>
-  <!-- door: subtle -->
-  <rect x="89" y="140" width="22" height="28" rx="4" fill="#ffffff" fill-opacity="0.9"/>
+  <!-- walls -->
+  <path d="M52,84 L52,158 Q52,163 57,163 L143,163 Q148,163 148,158 L148,84" fill="none" stroke="#f4f5f8" stroke-opacity="0.92" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- roofline arc: brand signature curve, ties to site's arc motif -->
-  <path d="M46,112 Q100,44 154,112" fill="none" stroke="url(#arcGrad)" stroke-width="11" stroke-linecap="round"/>
+  <!-- door -->
+  <path d="M86,163 L86,120 Q86,111 100,111 Q114,111 114,120 L114,163" fill="none" stroke="#f4f5f8" stroke-opacity="0.92" stroke-width="6" stroke-linejoin="round"/>
 
-  <!-- smart-home beacon: domotics -->
-  <circle cx="100" cy="60" r="19" fill="none" stroke="#ffffff" stroke-width="3" stroke-opacity="0.55"/>
-  <circle cx="100" cy="60" r="9" fill="#ffffff" filter="url(#softGlow)"/>
+  <!-- domotics beacon at the roof apex -->
+  <circle cx="100" cy="32" r="7.5" fill="url(#pulseGrad)" filter="url(#glow)"/>
+  <circle cx="100" cy="32" r="14" fill="none" stroke="url(#pulseGrad)" stroke-width="2" stroke-opacity="0.5"/>
 
-  <!-- renovation accent: trowel/tool notch at the base corner -->
-  <g transform="translate(140,150) rotate(45)">
-    <rect x="-4" y="-22" width="8" height="20" rx="3" fill="#ffffff" fill-opacity="0.95"/>
-    <path d="M-9,-2 L9,-2 L0,11 Z" fill="#ffffff" fill-opacity="0.95"/>
+  <!-- renovation accent: level line -->
+  <g transform="translate(150,128)">
+    <rect x="-24" y="-6" width="48" height="12" rx="6" fill="none" stroke="url(#roofGrad)" stroke-width="4"/>
+    <circle cx="0" cy="0" r="3.2" fill="url(#roofGrad)"/>
   </g>
 </svg>

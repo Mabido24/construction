@@ -336,7 +336,7 @@ body::before {
 
 .split-avatar { position: relative; width: 168px; height: 168px; display: grid; place-items: center; margin-bottom: 32px; }
 .split-avatar-mark {
-  width: 148px; height: 148px; border-radius: 50%; box-shadow: var(--glow); object-fit: cover;
+  width: 152px; height: 152px; object-fit: contain; filter: drop-shadow(0 10px 26px rgba(255, 106, 26, 0.35));
 }
 .split-name {
   font-size: 2.6rem; margin-bottom: 10px;
