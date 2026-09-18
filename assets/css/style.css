@@ -351,6 +351,8 @@ body::before {
 .split-left .arc-wrap-compact { margin-top: 40px; }
 .split-left .arc-wrap-compact .arc-line { height: 70px; }
 .split-left .arc-nav { width: 38px; height: 38px; }
+.split-left .arc-nav.prev { left: -38px; }
+.split-left .arc-nav.next { right: -38px; }
 .split-left .swipe-hint { margin-top: 20px; margin-bottom: 0; }
 .split-cta { margin-top: auto; padding-top: 48px; width: 100%; justify-content: center; }
 .split-left .footer-fineprint { margin-top: 24px; font-size: .74rem; }
