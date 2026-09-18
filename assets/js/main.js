@@ -61,51 +61,19 @@
     revealEls.forEach(function (el) { el.classList.add("visible"); });
   }
 
-  // ---- Homepage "Discover our work": one shared controller drives both the
-  // arc (above) and the card stack (below) — a single pair of arrows, no duplicate controls ----
+  // ---- Homepage "Discover our work": the arc is decorative (curve + arrows only);
+  // the single arrow pair drives which vignette card is active ----
   var arcCarousel = document.querySelector("[data-arc-carousel]");
   var fanRoot = document.querySelector("[data-fan-carousel]");
   if (arcCarousel || fanRoot) {
     var SERVICES = ["renovation", "construction", "domotics"];
     var active = SERVICES.indexOf("construction");
 
-    var arcItems = arcCarousel ? Array.prototype.slice.call(arcCarousel.querySelectorAll("[data-arc-item]")) : [];
-    var arcByService = {};
-    arcItems.forEach(function (item) { arcByService[item.getAttribute("data-service")] = item; });
-
     var cards = fanRoot ? Array.prototype.slice.call(fanRoot.querySelectorAll("[data-fan-card]")) : [];
     var dots = document.querySelectorAll("[data-dash-progress] span");
 
-    var renderArcSlot = function (slotName, service, isCenter) {
-      var item = arcByService[service];
-      var slot = arcCarousel.querySelector('[data-arc-slot="' + slotName + '"]');
-      if (!item || !slot) return;
-      var href = item.getAttribute("data-href");
-      var tone = item.getAttribute("data-tone");
-      var label = item.getAttribute("data-label");
-      var sub = item.getAttribute("data-sub");
-      var svg = item.innerHTML;
-      if (isCenter) {
-        slot.innerHTML =
-          '<a class="arc-item arc-center" href="' + href + '">' +
-          '<span class="arc-icon-center">' + svg + '</span>' +
-          '<span class="arc-label strong">' + label + '</span>' +
-          '<span class="arc-sub">' + sub + '</span></a>';
-      } else {
-        slot.innerHTML =
-          '<a class="arc-item" href="' + href + '">' +
-          '<span class="arc-icon ' + tone + '">' + svg + '</span>' +
-          '<span class="arc-label">' + label + '</span></a>';
-      }
-    };
-
     var render = function () {
       var n = SERVICES.length;
-      if (arcCarousel) {
-        renderArcSlot("prev", SERVICES[(active - 1 + n) % n], false);
-        renderArcSlot("center", SERVICES[active], true);
-        renderArcSlot("next", SERVICES[(active + 1) % n], false);
-      }
       if (cards.length) {
         cards.forEach(function (card) {
           var diff = (SERVICES.indexOf(card.getAttribute("data-service")) - active + n) % n;

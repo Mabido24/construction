@@ -10,25 +10,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
 
-      <svg class="arc-line" viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M20,110 Q300,-40 580,110" fill="none" stroke="url(#arcgrad)" stroke-width="2"/>
+      <svg class="arc-line" viewBox="0 0 600 90" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M20,80 Q300,-40 580,80" fill="none" stroke="url(#arcgrad)" stroke-width="2"/>
         <defs><linearGradient id="arcgrad" x1="0" x2="1"><stop offset="0" stop-color="#ffb703"/><stop offset="1" stop-color="#ff3d3d"/></linearGradient></defs>
       </svg>
-
-      <div class="arc-items">
-        <template data-arc-item data-service="renovation" data-href="{{RENOVATION_HREF}}" data-tone="renovation-tone" data-label="{{nav.renovation}}" data-sub="{{services.renovation.title}}">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2 4 12l3 3 10-10zM2 22l4-1 9-9-3-3-9 9z"/></svg>
-        </template>
-        <template data-arc-item data-service="construction" data-href="{{CONSTRUCTION_HREF}}" data-tone="construction-tone" data-label="{{nav.construction}}" data-sub="{{services.construction.title}}">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
-        </template>
-        <template data-arc-item data-service="domotics" data-href="{{DOMOTICS_HREF}}" data-tone="domotics-tone" data-label="{{nav.domotics}}" data-sub="{{services.domotics.title}}">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg>
-        </template>
-        <div class="arc-slot side" data-arc-slot="prev"></div>
-        <div class="arc-slot center" data-arc-slot="center"></div>
-        <div class="arc-slot side" data-arc-slot="next"></div>
-      </div>
 
       <button class="arc-nav next" type="button" aria-label="Next" data-arc-next>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
