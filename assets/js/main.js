@@ -61,63 +61,25 @@
     revealEls.forEach(function (el) { el.classList.add("visible"); });
   }
 
-  // ---- Fan carousel (v2 profile-style homepage) ----
-  var fanRoot = document.querySelector("[data-fan-carousel]");
-  if (fanRoot) {
-    var cards = Array.prototype.slice.call(fanRoot.querySelectorAll("[data-fan-card]"));
-    var dots = document.querySelectorAll(".dash-progress span");
-    var active = 0;
-
-    var layout = function () {
-      var n = cards.length;
-      cards.forEach(function (card, i) {
-        var diff = (i - active + n) % n;
-        var pos = "far";
-        if (diff === 0) pos = "active";
-        else if (diff === 1) pos = "next";
-        else if (diff === n - 1) pos = "prev";
-        card.setAttribute("data-pos", pos);
-      });
-      dots.forEach(function (d, i) { d.classList.toggle("active", i === active); });
-    };
-
-    var go = function (delta) {
-      active = (active + delta + cards.length) % cards.length;
-      layout();
-    };
-
-    fanRoot.querySelector("[data-fan-prev]").addEventListener("click", function () { go(-1); });
-    fanRoot.querySelector("[data-fan-next]").addEventListener("click", function () { go(1); });
-
-    cards.forEach(function (card, i) {
-      card.addEventListener("click", function () {
-        if (i !== active) { active = i; layout(); return; }
-        var href = card.getAttribute("data-href");
-        if (href) window.location.href = href;
-      });
-    });
-
-    // basic swipe support
-    var startX = null;
-    fanRoot.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
-    fanRoot.addEventListener("touchend", function (e) {
-      if (startX === null) return;
-      var dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) go(dx > 0 ? -1 : 1);
-      startX = null;
-    });
-
-    layout();
-  }
-
-  // ---- Contact arc: 3-item window (prev / center / next) — arrows on desktop, swipe on touch ----
+  // ---- Homepage "Discover our work": one shared controller drives both the
+  // arc (above) and the card stack (below) — a single pair of arrows, no duplicate controls ----
   var arcCarousel = document.querySelector("[data-arc-carousel]");
-  if (arcCarousel) {
-    var arcItems = Array.prototype.slice.call(arcCarousel.querySelectorAll("[data-arc-item]"));
-    var arcActive = parseInt(arcCarousel.getAttribute("data-active"), 10) || 0;
+  var fanRoot = document.querySelector("[data-fan-carousel]");
+  if (arcCarousel || fanRoot) {
+    var SERVICES = ["renovation", "construction", "domotics"];
+    var active = SERVICES.indexOf("construction");
 
-    var renderArcSlot = function (slotName, item, isCenter) {
+    var arcItems = arcCarousel ? Array.prototype.slice.call(arcCarousel.querySelectorAll("[data-arc-item]")) : [];
+    var arcByService = {};
+    arcItems.forEach(function (item) { arcByService[item.getAttribute("data-service")] = item; });
+
+    var cards = fanRoot ? Array.prototype.slice.call(fanRoot.querySelectorAll("[data-fan-card]")) : [];
+    var dots = document.querySelectorAll("[data-dash-progress] span");
+
+    var renderArcSlot = function (slotName, service, isCenter) {
+      var item = arcByService[service];
       var slot = arcCarousel.querySelector('[data-arc-slot="' + slotName + '"]');
+      if (!item || !slot) return;
       var href = item.getAttribute("data-href");
       var tone = item.getAttribute("data-tone");
       var label = item.getAttribute("data-label");
@@ -137,33 +99,56 @@
       }
     };
 
-    var renderArc = function () {
-      var n = arcItems.length;
-      renderArcSlot("prev", arcItems[(arcActive - 1 + n) % n], false);
-      renderArcSlot("center", arcItems[arcActive], true);
-      renderArcSlot("next", arcItems[(arcActive + 1) % n], false);
+    var render = function () {
+      var n = SERVICES.length;
+      if (arcCarousel) {
+        renderArcSlot("prev", SERVICES[(active - 1 + n) % n], false);
+        renderArcSlot("center", SERVICES[active], true);
+        renderArcSlot("next", SERVICES[(active + 1) % n], false);
+      }
+      if (cards.length) {
+        cards.forEach(function (card) {
+          var diff = (SERVICES.indexOf(card.getAttribute("data-service")) - active + n) % n;
+          var pos = diff === 0 ? "active" : diff === 1 ? "next" : "prev";
+          card.setAttribute("data-pos", pos);
+        });
+      }
+      dots.forEach(function (d, i) { d.classList.toggle("active", i === active); });
     };
 
-    var shiftArc = function (delta) {
-      arcActive = (arcActive + delta + arcItems.length) % arcItems.length;
-      renderArc();
+    var go = function (delta) {
+      active = (active + delta + SERVICES.length) % SERVICES.length;
+      render();
     };
 
-    var arcPrevBtn = document.querySelector("[data-arc-prev]");
-    var arcNextBtn = document.querySelector("[data-arc-next]");
-    if (arcPrevBtn) arcPrevBtn.addEventListener("click", function () { shiftArc(-1); });
-    if (arcNextBtn) arcNextBtn.addEventListener("click", function () { shiftArc(1); });
+    var prevBtn = document.querySelector("[data-arc-prev]");
+    var nextBtn = document.querySelector("[data-arc-next]");
+    if (prevBtn) prevBtn.addEventListener("click", function () { go(-1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { go(1); });
 
-    var arcStartX = null;
-    arcCarousel.addEventListener("touchstart", function (e) { arcStartX = e.touches[0].clientX; }, { passive: true });
-    arcCarousel.addEventListener("touchend", function (e) {
-      if (arcStartX === null) return;
-      var dx = e.changedTouches[0].clientX - arcStartX;
-      if (Math.abs(dx) > 40) shiftArc(dx > 0 ? -1 : 1);
-      arcStartX = null;
+    cards.forEach(function (card) {
+      card.addEventListener("click", function () {
+        var service = card.getAttribute("data-service");
+        if (SERVICES[active] !== service) { active = SERVICES.indexOf(service); render(); return; }
+        var href = card.getAttribute("data-href");
+        if (href) window.location.href = href;
+      });
     });
 
-    renderArc();
+    // swipe support (touch / PWA) on both the arc and the card stack
+    [arcCarousel, fanRoot].forEach(function (el) {
+      if (!el) return;
+      var startX = null;
+      el.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
+      el.addEventListener("touchend", function (e) {
+        if (startX === null) return;
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) go(dx > 0 ? -1 : 1);
+        startX = null;
+      });
+    });
+
+    render();
   }
 
   // ---- Contact form: subject "other" reveal + submit ----
