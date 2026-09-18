@@ -130,7 +130,7 @@
       if (isCenter) {
         slot.innerHTML =
           '<a class="arc-item arc-center" href="' + href + '" target="_blank" rel="noopener">' +
-          '<span class="arc-icon-center">' + svg + '</span>' +
+          '<span class="arc-icon-center ' + tone + '">' + svg + '</span>' +
           '<span class="arc-label strong">' + label + '</span></a>';
       } else {
         slot.innerHTML =
