@@ -452,6 +452,11 @@ body::before {
 .fan-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
 .fan-index { font-size: .72rem; font-weight: 700; padding: 5px 10px; border-radius: 999px; background: var(--bg-soft); color: var(--text-muted); }
 .fan-tag { font-size: .68rem; font-weight: 800; letter-spacing: .04em; padding: 5px 12px; border-radius: 999px; background: var(--accent-grad); color: #fff; }
+.fan-card-image {
+  margin: -26px -26px 18px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; overflow: hidden;
+  aspect-ratio: 3 / 2;
+}
+.fan-card-image img { width: 100%; height: 100%; object-fit: cover; }
 .fan-icon-lg {
   width: 58px; height: 58px; border-radius: 16px; background: var(--accent-grad); color: #fff;
   display: grid; place-items: center; margin-bottom: 20px; box-shadow: var(--glow);
