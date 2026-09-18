@@ -336,9 +336,7 @@ body::before {
 
 .split-avatar { position: relative; width: 168px; height: 168px; display: grid; place-items: center; margin-bottom: 32px; }
 .split-avatar-mark {
-  width: 148px; height: 148px; border-radius: 50%; background: var(--accent-grad); color: #fff;
-  display: grid; place-items: center; font-family: var(--ff-display); font-weight: 800; font-size: 3.4rem;
-  box-shadow: var(--glow);
+  width: 148px; height: 148px; border-radius: 50%; box-shadow: var(--glow); object-fit: cover;
 }
 .split-name {
   font-size: 2.6rem; margin-bottom: 10px;
@@ -562,3 +560,31 @@ body::before {
 /* Homepage-only sections revealed via the left-panel Area/Benefits shortcuts */
 .toggle-section { display: none; }
 .toggle-section.is-open { display: block; }
+
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  display: grid;
+  place-items: center;
+  background: var(--accent-grad);
+  color: #fff;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+  z-index: 60;
+}
+.back-to-top svg { width: 20px; height: 20px; }
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover { transform: translateY(-3px); }

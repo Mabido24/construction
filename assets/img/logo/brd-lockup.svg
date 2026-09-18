@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 200">
+  <defs>
+    <linearGradient id="badgeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb703"/>
+      <stop offset="55%" stop-color="#ff6a1a"/>
+      <stop offset="100%" stop-color="#ff3d3d"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f2efe9"/>
+      <stop offset="55%" stop-color="#ffb703"/>
+      <stop offset="100%" stop-color="#ff6a1a"/>
+    </linearGradient>
+    <filter id="softGlow2" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- badge -->
+  <rect x="4" y="4" width="192" height="192" rx="46" fill="url(#badgeGrad2)"/>
+  <rect x="4" y="4" width="192" height="192" rx="46" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2"/>
+
+  <!-- house base -->
+  <rect x="60" y="112" width="80" height="56" rx="8" fill="none" stroke="#ffffff" stroke-width="9" stroke-linejoin="round"/>
+  <rect x="89" y="140" width="22" height="28" rx="4" fill="#ffffff" fill-opacity="0.9"/>
+
+  <!-- roofline arc -->
+  <path d="M46,112 Q100,44 154,112" fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round"/>
+
+  <!-- beacon -->
+  <circle cx="100" cy="60" r="19" fill="none" stroke="#ffffff" stroke-width="3" stroke-opacity="0.55"/>
+  <circle cx="100" cy="60" r="9" fill="#ffffff" filter="url(#softGlow2)"/>
+
+  <!-- tool accent -->
+  <g transform="translate(140,150) rotate(45)">
+    <rect x="-4" y="-22" width="8" height="20" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+    <path d="M-9,-2 L9,-2 L0,11 Z" fill="#ffffff" fill-opacity="0.95"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="224" y="118" font-family="'Sora', 'Segoe UI', sans-serif" font-weight="800" font-size="88" letter-spacing="2" fill="url(#textGrad)">BRD</text>
+  <text x="226" y="150" font-family="'Inter', 'Segoe UI', sans-serif" font-weight="700" font-size="21" letter-spacing="6" fill="#8b93b8">RAWAI · PHUKET</text>
+</svg>
