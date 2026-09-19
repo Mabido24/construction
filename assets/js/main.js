@@ -37,8 +37,17 @@
   var burger = document.querySelector("[data-burger]");
   var navLinks = document.querySelector(".nav-links");
   if (burger && navLinks) {
-    burger.addEventListener("click", function () {
+    burger.addEventListener("click", function (e) {
+      e.stopPropagation();
       navLinks.classList.toggle("mobile-open");
+    });
+    navLinks.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") navLinks.classList.remove("mobile-open");
+    });
+    document.addEventListener("click", function (e) {
+      if (!navLinks.contains(e.target) && e.target !== burger) {
+        navLinks.classList.remove("mobile-open");
+      }
     });
   }
 
