@@ -59,7 +59,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 body {
   margin: 0;
   background: var(--bg);
@@ -322,16 +322,18 @@ body::before {
 
 /* ===== Split hero (kohconcept-style two-column layout) ===== */
 .split-hero {
-  display: grid; grid-template-columns: 440px 1fr; min-height: 720px;
+  display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); min-height: 720px;
   border: 1.5px solid var(--accent); border-radius: var(--radius-lg); overflow: hidden;
   background: var(--bg-elev); box-shadow: var(--shadow-lg);
 }
-@media (max-width: 980px) { .split-hero { grid-template-columns: 1fr; min-height: 0; } }
+@media (max-width: 980px) { .split-hero { grid-template-columns: minmax(0, 1fr); min-height: 0; } }
 
 .split-left {
   display: flex; flex-direction: column; align-items: center; text-align: center;
   padding: 72px 48px; border-right: 1px solid var(--border); background: var(--bg-soft);
+  min-width: 0; overflow: hidden;
 }
+@media (max-width: 640px) { .split-left { padding: 40px 20px; } }
 @media (max-width: 980px) { .split-left { border-right: none; border-bottom: 1px solid var(--border); } }
 
 .split-avatar { position: relative; width: 168px; height: 168px; display: grid; place-items: center; margin-bottom: 32px; }
@@ -351,11 +353,15 @@ body::before {
 .split-left .arc-nav { width: 38px; height: 38px; }
 .split-left .arc-nav.prev { left: -38px; }
 .split-left .arc-nav.next { right: -38px; }
+@media (max-width: 640px) {
+  .split-left .arc-nav.prev { left: 0; }
+  .split-left .arc-nav.next { right: 0; }
+}
 .split-left .swipe-hint { margin-top: 20px; margin-bottom: 0; }
 .split-cta { margin-top: auto; padding-top: 48px; width: 100%; justify-content: center; }
 .split-left .footer-fineprint { margin-top: 24px; font-size: .74rem; }
 
-.split-right { padding: 56px 48px; overflow: hidden; }
+.split-right { padding: 56px 48px; overflow: hidden; min-width: 0; }
 @media (max-width: 640px) { .split-right { padding: 32px 20px; } }
 .split-right .intro-card { margin-top: 0; }
 
@@ -555,6 +561,13 @@ body::before {
   background: var(--bg-elev);
   padding: 40px clamp(20px, 4vw, 40px);
   box-shadow: var(--shadow);
+}
+@media (max-width: 640px) {
+  .section-frame {
+    border: none; border-radius: 0; box-shadow: none; background: transparent;
+    padding: 32px 4px; margin-inline: -4px;
+  }
+  .split-hero { border: none; border-radius: 0; box-shadow: none; }
 }
 
 /* Homepage-only sections revealed via the left-panel Area/Benefits shortcuts */
