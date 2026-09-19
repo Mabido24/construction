@@ -573,12 +573,17 @@ body::before {
   box-shadow: var(--shadow);
 }
 @media (max-width: 640px) {
+  .container { padding-inline: 14px; }
   .section-frame {
     border: none; border-radius: 0; box-shadow: none; background: transparent;
-    padding: 32px 16px; margin-inline: 0;
+    padding: 28px 0; margin-inline: 0;
   }
   .split-hero { border: none; border-radius: 0; box-shadow: none; background: transparent; }
   .split-left, .split-right { background: transparent; }
+  .intro-card, .form-card, .info-card, .side-info .info-card {
+    border: none; box-shadow: none; background: transparent; padding-inline: 0;
+  }
+  .page-hero { border-bottom: none; }
 }
 
 /* Homepage-only sections revealed via the left-panel Area/Benefits shortcuts */
