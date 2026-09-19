@@ -578,10 +578,10 @@ body::before {
     border: none; border-radius: 0; box-shadow: none; background: transparent;
     padding: 28px 0; margin-inline: 0;
   }
-  .split-hero { border: none; border-radius: 0; box-shadow: none; background: transparent; }
-  .split-left, .split-right { background: transparent; }
+  .split-hero { border: none; border-radius: 0; box-shadow: none; background: var(--bg-elev); }
+  .split-left, .split-right { background: var(--bg-elev); }
   .intro-card, .form-card, .info-card, .side-info .info-card {
-    border: none; box-shadow: none; background: transparent; padding-inline: 0;
+    border: none; box-shadow: none; background: var(--bg-elev); padding-inline: 0;
   }
   .page-hero { border-bottom: none; }
 }
