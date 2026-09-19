@@ -100,6 +100,16 @@ body::before {
   border-bottom: 1px solid var(--border);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; padding-block: 16px; }
+@media (max-width: 640px) {
+  .site-header {
+    position: fixed; top: 12px; left: 12px; right: 12px; width: auto;
+    border: 1px solid var(--border); border-radius: 999px;
+    box-shadow: var(--shadow-lg);
+  }
+  .site-header .nav { padding-block: 8px; }
+  .site-header .container { padding-inline: 16px; }
+  main { padding-top: 78px; display: block; }
+}
 .brand { display: flex; align-items: center; gap: 10px; font-family: var(--ff-display); font-size: 1.1rem; font-weight: 700; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-name { letter-spacing: .04em; }
