@@ -595,8 +595,9 @@ body::before {
   .container { padding-inline: 14px; }
   .section-frame {
     border: none; border-radius: 0; box-shadow: none; background: transparent;
-    padding: 28px 0; margin-inline: 0;
+    padding-block: 28px; padding-inline: 0; margin-inline: 0;
   }
+  .container.section-frame { padding-inline: 14px; }
   .split-hero { border: none; border-radius: 0; box-shadow: none; background: transparent; }
   .split-left, .split-right { background: transparent; }
   .intro-card, .form-card, .info-card, .side-info .info-card {
